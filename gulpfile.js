@@ -10,10 +10,10 @@ gulp.task('min', function() {
   .pipe(grename('scripts.min.js'))
   .pipe(guglify())
     .on('error', gutil.log)
-  .pipe(gulp.dest('Compiled/Bundled'))
-})
+  .pipe(gulp.dest('Compiled/Bundled'));
+});
 
 gulp.watch('Compiled/Transpiled/**/*.js', 'min')
 .on('change', function(event) {
   console.log('Bundled was changed due to ', event);
-})
+});
