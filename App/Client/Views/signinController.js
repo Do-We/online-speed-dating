@@ -2,7 +2,7 @@
 import template from './signinTemplate.vue';
 
 const Login = {
-  name: 'Signin',
+  name: 'Login',
   template: template.template,
   data () {
     return {
@@ -11,10 +11,11 @@ const Login = {
     }; 
   },
   methods: {
-    notify: function() {
-      this.$broadcast()
-    },  
+    // notify: function() {
+    //   this.$dispatch('signin-user', this.username);
+    // },  
     login: function() {
+      // this.notify();
       this.$http.get('/api/user', {
         params: {
           username: this.username,
