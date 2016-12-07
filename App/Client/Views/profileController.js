@@ -52,7 +52,8 @@ var profile = {
       this.$router.push('/profileCreate/' + this.username);
     }	
   },
-  mounted: function() {
+  created: function() {
+    console.log(this.$route.params.id);
     this.loadUserProfile();
   }
 };

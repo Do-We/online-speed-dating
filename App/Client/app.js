@@ -11,16 +11,35 @@ import profile from './Views/profileController.js';
 import profileCreate from './Views/profileCreationController.js';
 
 import store from './store.js';
+
 Vue.use(VueResource);
 Vue.use(VueRouter);
+Vue.use(Vuex);
 
 console.log(store);
 
 Vue.component('login', login);
 
-
-
-
+var store = new Vuex.Store({
+  state: {
+    username: ''
+  },
+  getters: {
+    isUsername(state) {
+      return state.username;
+    }
+  },
+  mutation: {
+    set_Name (state, name) {
+      state.username = name;
+    }
+  },
+  action: {
+    setName ({commit}, name) {
+      commit(set_Name, name)
+    }
+  }
+})
 var routes = [
 
   {
@@ -36,7 +55,7 @@ var routes = [
     component: signup
   },
   {
-    path: '/profile',
+    path: '/profile/:id',
     component: profile,
     name: 'profile'
   },
@@ -56,7 +75,6 @@ const router = new VueRouter({
 
 
 const app = new Vue({
-
   store,
   router
 }).$mount('.app');

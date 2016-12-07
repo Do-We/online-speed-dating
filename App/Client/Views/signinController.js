@@ -46,8 +46,12 @@ const Login = {
     //   this.$dispatch('signin-user', this.username);
     // },  
     login: function() {
+<<<<<<< HEAD
       // this.notify();
 >>>>>>> editing files to get username input to be passed between components
+=======
+
+>>>>>>> access to current user id established
       this.$http.get('/api/user', {
         params: {
           username: this.username,
@@ -78,9 +82,13 @@ const Login = {
 =======
       })
       .then((res) => { 
+<<<<<<< HEAD
         console.log(this.username);
 >>>>>>> working on profile controller and template. working on sending props between children
         this.$router.push('/profile');
+=======
+        this.$router.push('/profile/' + res.body.username);
+>>>>>>> access to current user id established
       })
       .catch((err) => console.error(err));
 <<<<<<< HEAD
