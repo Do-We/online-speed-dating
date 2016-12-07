@@ -4,9 +4,9 @@ import { mapState } from 'vuex';
 var profile = {
   name: 'profile',
   template: temp.template,
+  props: {'username': {type: String}},
   data: function() {
     return {
-      username: '',
       name: '',
       age: '',
       gender: '',
@@ -54,7 +54,7 @@ var profile = {
       this.$router.push('/profileCreate/' + this.username);
     }	
   },
-  created: function() {
+  mounted: function() {
     this.loadUserProfile();
   }
 };
