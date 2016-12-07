@@ -46,7 +46,6 @@ var profile = {
           this.profileImg = user.profileImg; 
           this.userinfo = user.userinfo;
         } 
-      })
       .catch((err) => console.error(err));
     },
     update: function() {
