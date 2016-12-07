@@ -6,6 +6,7 @@ var profile = {
   template: temp.template,
   data: function() {
     return {
+      username: this.$route.params.id,
       name: '',
       age: '',
       gender: '',
