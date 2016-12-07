@@ -4,9 +4,6 @@ import { mapState } from 'vuex';
 var profile = {
   name: 'profile',
   template: temp.template,
-  props: {
-    username: String
-  },
   data: function() {
     return {
       name: '',

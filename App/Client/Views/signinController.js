@@ -3,9 +3,13 @@ import template from './signinTemplate.vue';
 
 const Login = {
 <<<<<<< HEAD
+<<<<<<< HEAD
   name: 'Login',
 =======
 >>>>>>> working on profile page. updated app
+=======
+  name: 'Signin',
+>>>>>>> working on profile controller and template. working on sending props between children
   template: template.template,
   data () {
     return {
@@ -14,6 +18,7 @@ const Login = {
     }; 
   },
   methods: {
+<<<<<<< HEAD
 <<<<<<< HEAD
     // notify: function() {
     //   this.$dispatch('signin-user', this.username);
@@ -25,11 +30,18 @@ const Login = {
 
 <<<<<<< HEAD
 >>>>>>> working on profile page. updated app
+=======
+    notify: function() {
+      this.$broadcast()
+    },  
+    login: function() {
+>>>>>>> working on profile controller and template. working on sending props between children
       this.$http.get('/api/user', {
         params: {
           username: this.username,
           password: this.password
         }, 
+<<<<<<< HEAD
 <<<<<<< HEAD
       })
       .then((res) => { 
@@ -51,18 +63,29 @@ const Login = {
         console.log(username);
         this.username = username;
         console.log(this.username)
-        this.$router.push('/profile');
->>>>>>> working on on page load functionality
+=======
       })
-      .then((res) => { console.log('request sent'); })
+      .then((res) => { 
+        console.log(this.username);
+>>>>>>> working on profile controller and template. working on sending props between children
+        this.$router.push('/profile');
+      })
       .catch((err) => console.error(err));
+<<<<<<< HEAD
     },
 >>>>>>> working on profile page. updated app
+=======
+    }
+>>>>>>> working on profile controller and template. working on sending props between children
   }
 };
 
 export default Login;
 <<<<<<< HEAD
+<<<<<<< HEAD
  
 =======
 >>>>>>> working on profile page. updated app
+=======
+ 
+>>>>>>> working on profile controller and template. working on sending props between children
