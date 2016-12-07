@@ -5,16 +5,20 @@ const Login = {
   template: template.template,
   data () {
     return {
-      username: ''
+      username: '',
+      password: ''
     }; 
   },
   methods: {
     login: function() {
-      this.$http.get('/api/users/', {username: this.username})
-      .then((res) => {
 
-
+      this.$http.get('/api/user', {
+        params: {
+          username: this.username,
+          password: this.password
+        }, 
       })
+      .then((res) => { console.log('request sent'); })
       .catch((err) => console.error(err));
     },
   }

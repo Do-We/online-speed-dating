@@ -1,9 +1,8 @@
 var router = require('express').Router();
-//require in helper functions
+var userHandler = require('../handlers/userHandler.js');
 
+router.post('/user', userHandler.signUpUser);
+router.get('/user', userHandler.loginUser);
 
-router.post('/user', function(req, res, next) { return req; });
-router.get('/user', function(req, res, next) { return req; });
-router.get('/users', function(req, res, next) { return req; });
 
 module.exports = router; 

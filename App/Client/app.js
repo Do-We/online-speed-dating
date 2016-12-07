@@ -1,9 +1,9 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import VueResource from 'vue-resource'; 
-import App from './appController.js';
+import AppTEST from './appController.js';
 import signin from './Views/signinController.js';
-// import video from './video/video.vue';
+import video from './Views/videoController.js';
 import signup from './Views/signupController.js';
 
 Vue.use(VueResource);
@@ -13,16 +13,16 @@ var routes = [
 
   {
     path: '/',
-    component: App
-  },
+    component: AppTEST
+  },  
   {
     path: '/signin',
     component: signin
   },
-    // {
-    //     path: '/video',
-    //     component: video
-    // },
+  {
+    path: '/video',
+    component: video
+  },
   {
     path: '/signup',
     component: signup
