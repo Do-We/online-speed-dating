@@ -4,12 +4,16 @@ import template from './signinTemplate.vue';
 const Login = {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   name: 'Login',
 =======
 >>>>>>> working on profile page. updated app
 =======
   name: 'Signin',
 >>>>>>> working on profile controller and template. working on sending props between children
+=======
+  name: 'Login',
+>>>>>>> editing files to get username input to be passed between components
   template: template.template,
   data () {
     return {
@@ -18,6 +22,7 @@ const Login = {
     }; 
   },
   methods: {
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     // notify: function() {
@@ -36,6 +41,13 @@ const Login = {
     },  
     login: function() {
 >>>>>>> working on profile controller and template. working on sending props between children
+=======
+    // notify: function() {
+    //   this.$dispatch('signin-user', this.username);
+    // },  
+    login: function() {
+      // this.notify();
+>>>>>>> editing files to get username input to be passed between components
       this.$http.get('/api/user', {
         params: {
           username: this.username,

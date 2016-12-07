@@ -28,7 +28,7 @@ var routes = [
     component: AppTEST
   },  
   {
-    path: '/video',
+  path: '/video',
     component: video
   },
   {
