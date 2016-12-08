@@ -11,12 +11,13 @@ const login = {
   },
   methods: {
     login: function() {
-
       this.$http.post('/auth/login', {
         username: this.username,
         password: this.password 
       })
-      .then((res) => { console.log(res); })
+      .then((res) => { 
+        this.$router.push('/profile/' + res.body.username);
+        })
       .catch((err) => console.error(err));
     },
   },

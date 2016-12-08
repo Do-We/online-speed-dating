@@ -8,37 +8,34 @@ var profile = {
       username: this.$route.params.id,
       name: '',
       age: '',
-      location: ''
+      gender: '',
+      location: '',
+      profileImg: 'profile_img_here',
+      userinfo: '',
     };
   },
   methods: {
-    setUserInfo: function() {
-      var body = {
-        name: this.name,
-        age: this.age,
-        location: this.location
-      };
-      this.$http.post('/api/user', body)
-      .then((response) => {
-
-      })
-      .catch((err) => {
-
-      });
-    },
     loadUserProfile: function() {
       console.log('before page loaded ', this.$route.params.id);
       this.$http.get('/api/user', {params: {username: this.$route.params.id }})
       .then((res) => {
-        if (!res.body.name) {
-          console.log(this.username);
-        }
-      })
+        var user = res.body;
+          if(user.name || user.age || user.location || user.gender || user.profileImg || user.userinfo){
+            this.name = user.name;
+            this.age = user.age;
+            this.location = user.location;
+            this.gender = user.gender;
+            this.profileImg = user.profileImg;
+            this.userinfo = user.userinfo
+          } 
+        })
       .catch((err) => console.error(err));
+    },
+    update: function() {
+      this.$router.push( '/' + this.username + '/profile')
     }	
   },
   created: function() {
-    console.log(this.$route.params.id);
     this.loadUserProfile();
   }
 };

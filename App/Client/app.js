@@ -11,10 +11,6 @@ Vue.use(VueResource);
 Vue.use(VueRouter);
 Vue.use(Vuex);
 
-<<<<<<< HEAD
-Vue.component('login', login);
-
-=======
 var store = new Vuex.Store({
   state: {
     username: ''
@@ -31,11 +27,13 @@ var store = new Vuex.Store({
   },
   action: {
     setName ({commit}, name) {
-      commit(set_Name, name)
+      commit(set_Name, name);
     }
   }
-})
->>>>>>> access to current user id established
+});
+
+Vue.component('login', login);
+
 var routes = [
 
   {
