@@ -1,8 +1,8 @@
-import temp from './profileCreationTemplate.vue';
+import temp from './profileCreationTemplate';
 
 var profileCreation = {
   template: temp.template,
-  name: 'profileCreation',
+  name: profileCreation,
   data: function() {
     return {
       username: this.$route.params.id,
@@ -12,13 +12,11 @@ var profileCreation = {
       location: '',
       profileImg: '',
       userinfo: '',
-    };
+    }
   },
   methods: {
     setUserInfo: function() {
-      console.log('setting')
       var body = {
-        username: this.username,
         name: this.name,
         age: this.age,
         location: this.location,
@@ -58,3 +56,4 @@ var profileCreation = {
 };
 
 export default profileCreation;
+
