@@ -11,7 +11,6 @@ import profile from './Views/profileController.js';
 import profileCreate from './Views/profileCreationController.js';
 
 import store from './store.js';
-
 Vue.use(VueResource);
 Vue.use(VueRouter);
 
@@ -35,7 +34,6 @@ var routes = [
   {
     path: '/signup',
     component: signup
-
   },
   {
     path: '/profile',

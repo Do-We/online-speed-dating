@@ -1,4 +1,5 @@
 import temp from './profileTemplate.vue';
+
 import { mapState } from 'vuex';
 var profile = {
   name: 'profile',

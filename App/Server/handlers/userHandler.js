@@ -43,3 +43,8 @@ exports.getUser = function (req, res) {
   });
 };
 
+exports.updateUser = function (req, res) {
+  User.findOneAndUpdate({username: req.body.username}, {$set: req.body}, function() {
+    res.send(204);
+  });
+};
