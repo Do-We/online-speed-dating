@@ -16,7 +16,6 @@ const login = {
         password: this.password 
       })
       .then((res) => { 
-        console.log(res);
         this.$router.push('/profile/' + res.body.username);
         })
       .catch((err) => console.error(err));
