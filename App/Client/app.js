@@ -41,7 +41,6 @@ var store = new Vuex.Store({
   }
 });
 
-
 Vue.component('login', login);
 
 var routes = [
