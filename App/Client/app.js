@@ -9,8 +9,8 @@ import video from './Views/videoController.js';
 import signup from './Views/signupController.js';
 import profile from './Views/profileController.js';
 import profileCreate from './Views/profileCreationController.js';
-
 import store from './store.js';
+import Vuex from 'vuex';
 
 Vue.use(VueResource);
 Vue.use(VueRouter);
