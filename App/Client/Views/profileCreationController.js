@@ -1,4 +1,4 @@
-import temp from './profileCreationTemplate';
+import temp from './profileCreationTemplate.vue';
 
 var profileCreation = {
   template: temp.template,
@@ -56,4 +56,3 @@ var profileCreation = {
 };
 
 export default profileCreation;
-
