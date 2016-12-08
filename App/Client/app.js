@@ -36,10 +36,13 @@ var store = new Vuex.Store({
   },
   action: {
     setName ({commit}, name) {
-      commit(set_Name, name)
+      commit(set_Name, name);
     }
   }
-})
+});
+
+Vue.component('login', login);
+
 var routes = [
 
   {

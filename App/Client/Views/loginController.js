@@ -22,7 +22,7 @@ const login = {
       .catch((err) => console.error(err)); 
 =======
         console.log(res);
-        this.$router.push('/profile/' + res.body.username); 
+        this.$router.push('/profile/' + res.body.username);
         })
       .catch((err) => console.error(err));
 >>>>>>> testing on creation render
