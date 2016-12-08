@@ -16,7 +16,9 @@ var profileCreation = {
   },
   methods: {
     setUserInfo: function() {
+      console.log('setting')
       var body = {
+        username: this.username,
         name: this.name,
         age: this.age,
         location: this.location,
@@ -24,10 +26,9 @@ var profileCreation = {
         gender: this.gender,
         userinfo: this.userinfo
       };
-      this.$http.post('/api/user', body)
+      this.$http.put('/api/user', body)
       .then((response) => {
-          console.log(response)
-
+        this.$router.push('/profile/' + this.username);
       })
       .catch((err) => {
 
