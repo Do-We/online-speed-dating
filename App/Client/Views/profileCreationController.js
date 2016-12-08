@@ -2,7 +2,7 @@ import temp from './profileCreationTemplate.vue';
 
 var profileCreation = {
   template: temp.template,
-  name: 'profileCreation',
+  name: profileCreation,
   data: function() {
     return {
       username: this.$route.params.id,
@@ -12,11 +12,13 @@ var profileCreation = {
       location: '',
       profileImg: '',
       userinfo: '',
-    };
+    }
   },
   methods: {
     setUserInfo: function() {
+      console.log('setting')
       var body = {
+        username: this.username,
         name: this.name,
         age: this.age,
         location: this.location,
@@ -24,10 +26,10 @@ var profileCreation = {
         gender: this.gender,
         userinfo: this.userinfo
       };
-      this.$http.post('/api/user', body)
+      this.$http.put('/api/user', body)
       .then((response) => {
+        this.$router.push('/profile/' + this.username);
         console.log(response);
-
       })
       .catch((err) => {
 

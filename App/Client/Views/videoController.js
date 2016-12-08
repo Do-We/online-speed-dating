@@ -15,7 +15,6 @@ var video = {
   },
   methods: {
     makePhone: function(myNumber) {
-      var that = this;
       this.phone = window.phone = PHONE({
         number: myNumber, // listen on username line else Anonymous
         publish_key: 'pub-c-97dbae08-7b07-4052-b8e0-aa255720ea8a', // Your Pub Key
@@ -26,7 +25,7 @@ var video = {
         console.log('connected with', session);
         console.log(this);
         console.log(this.video);
-        that.videoOut = session.video.outerHTML;
+        this.videoOut = session.video.outerHTML;
       };
       this.phone.ready(function() {
         console.log('phone ready');
@@ -43,7 +42,6 @@ var video = {
       });
     },
     makeBroadcaster: function() {
-      var that = this;
       this.phone = window.phone = PHONE({
         number: 'BROADCASTER', // listen on username line else Anonymous
         publish_key: 'pub-c-97dbae08-7b07-4052-b8e0-aa255720ea8a', // Your Pub Key
@@ -54,7 +52,7 @@ var video = {
         console.log('connected with', session);
         console.log(this);
         console.log(this.video);
-        that.videoOut = session.video.outerHTML;
+        this.videoOut = session.video.outerHTML;
       };
       this.phone.ready(function() {
         console.log('phone ready');

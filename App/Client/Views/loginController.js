@@ -17,8 +17,8 @@ const login = {
       })
       .then((res) => { 
         this.$router.push('/profile/' + res.body.username);
-      })
-      .catch((err) => console.error(err)); 
+        })
+      .catch((err) => console.error(err));
     },
   },
   name: 'login'

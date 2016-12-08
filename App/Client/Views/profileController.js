@@ -1,11 +1,12 @@
 import temp from './profileTemplate.vue';
 import { mapState } from 'vuex';
+
 var profile = {
   name: 'profile',
   template: temp.template,
   data: function() {
     return {
-      username: '',
+      username: this.$route.params.id,
       name: '',
       age: '',
       gender: '',
@@ -38,6 +39,7 @@ var profile = {
       this.$http.get('/api/user', {params: {username: this.$route.params.id }})
       .then((res) => {
         var user = res.body;
+
         if (user.name || user.age || user.location || user.gender || user.profileImg || user.userinfo) {
           this.name = user.name;
           this.age = user.age;
@@ -46,7 +48,6 @@ var profile = {
           this.profileImg = user.profileImg; 
           this.userinfo = user.userinfo;
         } 
-      })
       .catch((err) => console.error(err));
     },
     update: function() {
