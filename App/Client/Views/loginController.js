@@ -17,7 +17,7 @@ const login = {
       })
       .then((res) => { 
         console.log(res);
-        this.$router.push('/profile/' + res.body.username); 
+        this.$router.push('/profile/' + res.body.username);
         })
       .catch((err) => console.error(err));
     },

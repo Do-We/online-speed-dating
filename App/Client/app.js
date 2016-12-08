@@ -41,6 +41,30 @@ var store = new Vuex.Store({
   }
 });
 
+<<<<<<< HEAD
+=======
+var store = new Vuex.Store({
+  state: {
+    username: ''
+  },
+  getters: {
+    isUsername(state) {
+      return state.username;
+    }
+  },
+  mutation: {
+    set_Name (state, name) {
+      state.username = name;
+    }
+  },
+  action: {
+    setName ({commit}, name) {
+      commit(set_Name, name);
+    }
+  }
+});
+
+>>>>>>> boop
 Vue.component('login', login);
 
 var routes = [
