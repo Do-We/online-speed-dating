@@ -19,7 +19,7 @@
 	      <span>Description: {{userinfo}}</span>
 	    </div>
 	</div>
-	<button v-if='verified' v-on:click='update'>Update User Info</button>
+	<button v-if='this.$store.state.username' v-on:click='editProfile'>Update User Info</button>
 	<!--<div>*Place holder for matchs*</div>-->
   </div>
 </template>

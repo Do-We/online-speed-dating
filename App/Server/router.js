@@ -5,5 +5,9 @@ var router = require('express').Router();
 
 router.use('/api', apiRouter);
 router.use('/auth', authRouter);
+router.use('/error', function(req, res) {
+  res.status(401).send('unauthorized');
+});
 
-module.exports = router; 
+
+module.exports = router;   

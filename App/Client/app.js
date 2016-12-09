@@ -6,7 +6,7 @@ import router from './Router/router.js';
 import store from './store.js';
 
 import login from './Views/loginController.js';
-import profileLink from './Views/profileLink.js';
+import profileLink from './Views/profileLinkController.js';
 
 Vue.use(VueResource);
 Vue.use(VueRouter);
