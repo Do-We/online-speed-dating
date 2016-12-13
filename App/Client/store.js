@@ -20,7 +20,7 @@ var store = new Vuex.Store({
     currentRound: null,
     savedEvents: [],
     allEvents: [],
-    
+
     user: {
       username: '',
     }
@@ -33,7 +33,7 @@ var store = new Vuex.Store({
   mutations: {
     clearState(state) {
       console.log('this is before ', state);
-      var initialState = { 
+      var initialState = {
         videoOutSrc: '',
         myVideoSrc: '',
         beforeEventFlag: true,
@@ -45,7 +45,7 @@ var store = new Vuex.Store({
         currentRound: null,
         savedEvents: [],
         allEvents: [],
-    
+
         user: {
           username: '',
         }
@@ -54,9 +54,9 @@ var store = new Vuex.Store({
       for (var key in initialState) {
         state[key] = initialState[key];
       }
-      
+
       state = initialState;
-      console.log('this is asfter ', state);
+      console.log('this is after ', state);
       if (state.pubnub) {
         state.pubnub.stop();
       }
@@ -140,8 +140,8 @@ var store = new Vuex.Store({
       var sessionConnected = function (session) {
         console.log('connected with', session);
         state.videoOutSrc = session.video.src;
-      
-      }; 
+
+      };
       state.phone.ready(function() {
         state.myVideoSrc = URL.createObjectURL(phone.mystream);
         console.log('phone ready');
