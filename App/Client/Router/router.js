@@ -17,9 +17,9 @@ import myProfile from '../Components/myProfileController.js';
 
 var routes = [
   {
-    path: '/', 
+    path: '/',
     component: landingPage
-  },  
+  },
   {
     path: '/video',
     meta: { requiresAuth: true },
@@ -41,7 +41,7 @@ var routes = [
     children: [
       {
         path: 'edit',
-        name: 'edit', 
+        name: 'edit',
         component: profileCreate,
       },
       {
@@ -92,7 +92,7 @@ const router = new VueRouter({
   routes
 });
 
-//we are not refreshing state to get changes on user between pages, if they are already logged in. 
+//we are not refreshing state to get changes on user between pages, if they are already logged in.
 //refactor later to set flags on certain routes that require updated user info
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
@@ -120,7 +120,7 @@ router.beforeEach((to, from, next) => {
       } else {
         // console.log('logged in but no admin');
         next({
-          path: '/'  
+          path: '/'
         });
       }
     } else {

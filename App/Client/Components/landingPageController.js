@@ -3,9 +3,9 @@ import temp from '../Templates/landingPageTemplate.vue';
 var app = {
   template: temp.template,
   data: function() {
-    return { 
-      msg: 'Welcome To Do-We! ' + this.$store.state.user.username,
-      background: '../Images/background.jpg'
+    return {
+      msg: 'Welcome To hell', //+ this.$store.state.user.username,
+      background: '../Images/bigdog.jpg'
     };
   },
 
@@ -14,22 +14,22 @@ var app = {
       this.$http.post('/event/start', {
         eventId: 1234
       })
-      .then((res) => { 
+      .then((res) => {
         var body = res.body;
         this.$store.commit('setUser', body);
       })
-      .catch((err) => console.error(err)); 
+      .catch((err) => console.error(err));
     },
-    
+
     TESTpublash: function() {
       this.$http.post('/event/setup', {
         eventName: 'Menergy'
       })
-      .then((res) => { 
+      .then((res) => {
         var body = res.body;
         this.$store.commit('setUser', body);
       })
-      .catch((err) => console.error(err)); 
+      .catch((err) => console.error(err));
     },
   },
 };

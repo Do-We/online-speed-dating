@@ -7,7 +7,7 @@ const activeDate = {
   data () {
     return {
       number: null
-    }; 
+    };
   },
 
   methods: {
@@ -29,7 +29,7 @@ const activeDate = {
 
         message: 'Ready',
         channel: 'eventId' + this.$store.state.user.username
-        
+
       });
       this.$store.commit('signalCalleeReadyFlag');
     },
@@ -56,7 +56,7 @@ const activeDate = {
       this.$store.state.soloViewFlag = !this.$store.state.soloViewFlag;
     }
   },
-  
+
   name: 'activeDate'
 };
 
