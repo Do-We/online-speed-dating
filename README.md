@@ -120,4 +120,4 @@ The Hot Date Boyz--back at it again!
 To do something that our app wants to do
 
 ##License
-???
+MIT
