@@ -23,12 +23,19 @@ var myProfile = {
     '$route': 'checkRoute'
   },
   methods: {
+
+  //////part that breaks/////////////////////////////////
     toDate (event) {
+      //add conditional for event setup here
+      //if not set up, push to different route or return
+      //else go to event
       this.$router.push('/date/' + event._id + '/active');
     },
+  //////////////////////////////////////////////////////
+
     editProfile () {
       this.$router.push('/myprofile/' + this.username + '/edit');
-    }, 
+    },
     setProfileInfo (res) {
       for (var key in res) {
         this[key] = res[key];
@@ -41,11 +48,11 @@ var myProfile = {
           { params: {username: this.$route.params.id}}
         )
         .then((res)=>{
-          this.setProfileInfo(res.body); 
+          this.setProfileInfo(res.body);
         });
       } else {
-        this.setProfileInfo(this.$store.getters.getProfileInfo); 
-      } 
+        this.setProfileInfo(this.$store.getters.getProfileInfo);
+      }
     },
     moment (date) {
       return moment(date);
@@ -57,7 +64,7 @@ var myProfile = {
       } else {
         this.$router.push('/myprofile/' + this.$route.params.id);
       }
-    }    
+    }
   },
 
 };

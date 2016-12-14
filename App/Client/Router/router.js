@@ -71,21 +71,26 @@ var routes = [
       }
     ]
   },
+
+  ///////////////////////////////////////////////////////////////////////////////////
+  /////this one breaks if navigated to before event is 'set up'......but WHY
+  //user can enter and THEN LEAVE before setup and setup will run fine
+  //if user enters before setup and STAYS, things will break (fed empty arrays)
+  //if user leaves IN THE MIDDLE OF A SESSION, things will break (messes up arrays)
+  //need to create a method to bar user from joining a date room before it is 'set up' by admin
   {
     path: '/date/:dateid',
-    meta: { requiresAuth: true },
+    meta: { requiresAuth: true }, //add another conditional here?
     component: blank,
     children: [
       {
         path: 'active',
+        //add another meta conditional here possibly
         component: activeDate,
       }
-  //     {
-  //       path: '/inactive',
-  //       component: inactiveController,
-  //     },
     ]
   }
+  ///////////////////////////////////////////////////////////////////////////////////
 ];
 
 const router = new VueRouter({
@@ -110,28 +115,31 @@ router.beforeEach((to, from, next) => {
   } else {
     next(); // make sure to always call next()!
   }
-  if (to.matched.some(record => record.meta.requiresAdmin)) {
-    // console.log('requres admin', store.state.user);
-    if (store.state.user) {
-      // console.log('logged in');
-      if (store.state.user.admin) {
-        // console.log('logged in as admin');
-        next();
-      } else {
-        // console.log('logged in but no admin');
-        next({
-          path: '/'
-        });
-      }
-    } else {
-      // console.log('not logged in');
-      next({
-        path: '/'
-      }
-      );
-    }
 
-  }
+  //NOT CURRENTLY USED
+  // if (to.matched.some(record => record.meta.requiresAdmin)) {
+  //   // console.log('requres admin', store.state.user);
+  //   if (store.state.user) {
+  //     // console.log('logged in');
+  //     if (store.state.user.admin) {
+  //       // console.log('logged in as admin');
+  //       next();
+  //     } else {
+  //       // console.log('logged in but no admin');
+  //       next({
+  //         path: '/'
+  //       });
+  //     }
+  //   } else {
+  //     // console.log('not logged in');
+  //     next({
+  //       path: '/'
+  //     }
+  //     );
+  //   }
+  // }
+
+  //add a auth to check if room is set up
 });
 
 export default router;

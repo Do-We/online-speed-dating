@@ -153,7 +153,7 @@ var store = new Vuex.Store({
 
         session.connected(sessionConnected);
         session.ended(function(idk) {
-          console.log('sessionn ended');
+          console.log('session ended');
         });
       });
     },

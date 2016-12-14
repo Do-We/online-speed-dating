@@ -6,11 +6,11 @@ var admin = {
   data: function () {
     return {
       username: '',
-      date: '', 
+      date: '',
       eventType: '',
       eventName: ''
     };
-  }, 
+  },
   computed: {
     allEvents () {
       return this.$store.state.allEvents;
@@ -26,26 +26,30 @@ var admin = {
       this[event._id] = 1;
     },
 
-    setupEvent(event) {
+    /////////////do something here?
+    setupEvent(event) { //activeEventHandler.setupEvent (by _id)
       console.log(event._id);
       this.$http.post('/event/setup', {
-        _id: event._id
+        _id: event._id //search db for event by _id --> findOne({_id: event._id})
       })
-      .then((res) => { 
+      .then((res) => {
+        console.log('setup res', res.body) // --> 'CALL LISTS SO HOT RIGHT NOW'
+        //res.body could be something to use as a conditional
         var body = res.body;
         this.$store.commit('setUser', body);
       })
-      .catch((err) => console.error(err)); 
+      .catch((err) => console.error(err));
     },
+    //////////////////////////
 
-    endEvent(event) { 
+    endEvent(event) {
       this.$store.state.pubnub.publish({
         message: 'End',
         channel: [event._id]
       });
     },
 
-    incrementRound(event) { 
+    incrementRound(event) {
       this.$store.state.pubnub.publish({
         message: this[event._id],
         channel: [event._id]
@@ -56,33 +60,36 @@ var admin = {
     moment: function (date) {
       return moment(date);
     },
-    submit () {
 
+
+//////CREATE A NEW EVENT
+    submit () { //submit form from adminTemplate.vue
       var body = {
         username: this.username,
         date: this.date,
         eventType: this.eventType,
         eventName: this.eventName
-      };
-      console.log(body);
-      let dbUrl = '/api/events';
-      this.$http.post(dbUrl, body)
+      }; //send as body obj
+
+      //eventHandler.js
+      let dbUrl = '/api/events'; //sends to eventHandler.postEvent
+      this.$http.post(dbUrl, body) //creates new model with body and saves to db
+
+      //store.js
       .then((res) => {
-        console.log(res.body);
         this.$store.commit( 'setNewEvent', res.body);
-        //clear form fields
+        //setNewEvent with server res (state.allEvents.push(res.body))
         this.username = '',
         this.date = '',
-        this.eventType = '', 
-        this.eventName = '';
+        this.eventType = '',
+        this.eventName = '';  //clear form fields
 
       })
       .catch((err) => {
         console.error('Something went wrong with POST: ', err);
       });
-    } 
+    }
   },
 };
-
 
 export default admin;
