@@ -1,21 +1,10 @@
 var webpackUglifyJsPlugin = require('webpack-uglify-js-plugin');
-var path = require('path'); 
-
-
-
+var path = require('path');
+const webpack = require('webpack');
+const DotenvPlugin = require('webpack-dotenv-plugin');
 
 module.exports = {
   entry: './App/Client/app.js',
-  output: {
-    path: path.join(__dirname, '/compiled/transpiled'),
-    publicPath: 'compiled/transpiled',
-    filename: '[name].js'
-  },
-  resolve: {
-    alias: {
-      'vue$': 'vue/dist/vue.common.js'
-    }
-  },
   module: {
     loaders: [
       {
@@ -28,6 +17,26 @@ module.exports = {
         loader: 'vue'
       }
     ]
+  },
+  output: {
+    path: path.join(__dirname, '/compiled/transpiled'),
+    publicPath: 'compiled/transpiled',
+    filename: '[name].js'
+  },
+  plugins: [
+    new DotenvPlugin({
+      sample: './.env.example',
+      path: './.env'
+    }),
+    new webpack.EnvironmentPlugin([
+      'PUBNUB_PUBLISH_KEY',
+      'PUBNUB_SUBSCRIBE_KEY'
+    ])
+  ],
+  resolve: {
+    alias: {
+      'vue$': 'vue/dist/vue.common.js'
+    }
   },
   vue: {
     loaders: {

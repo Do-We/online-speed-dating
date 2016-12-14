@@ -70,5 +70,8 @@
     "webpack-uglify-js-plugin": "^1.1.9",
     "webrtc": "^1.14.1"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "dotenv-safe": "^3.0.0",
+    "webpack-dotenv-plugin": "^1.4.0"
+  }
 }
