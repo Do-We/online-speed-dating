@@ -1,3 +1,0 @@
-vue router
--> sets controllers and urls
--> html templates are loaded inside of controller scripts themselves
