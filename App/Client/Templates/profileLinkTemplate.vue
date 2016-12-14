@@ -8,7 +8,7 @@
                 <a href="#" class="dropdown-toggle " data-toggle="dropdown"><b>Profile Options</b> <span class="caret"></span></a>
                 <ul id="login-dp" class="dropdown-menu logout-profile">
                     <li>
-                        <button type="submit" class="btn btn-primary btn-block" v-on:click.prevent="logout">Logout</button>
+                        <button v-on:click.prevent="goToEvents" type="submit" class="btn btn-primary btn-block">Events</button>
                     </li>
                     <li>
                         <button v-on:click.prevent="goToMyProfile" type="submit" class="btn btn-primary btn-block">My Room</button>
@@ -18,6 +18,9 @@
                     </li>
                     <li>
                         <button v-on:click.prevent="goToProfile" type="submit" class="btn btn-primary btn-block">Profile</button>
+                    </li>
+                    <li>
+                        <button type="submit" class="btn btn-primary btn-block" v-on:click.prevent="logout">Logout</button>
                     </li>
             </li>
             </ul>
