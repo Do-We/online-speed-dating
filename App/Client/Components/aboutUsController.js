@@ -4,10 +4,10 @@ var aboutus = {
   template: temp.template,
   data: function() {
     return {
-      dan: '../Images/bigdog.jpg',
-      elliott: '../Images/bigdog.jpg',
-      eric: '../Images/bigdog.jpg',
-      wasiff: '../Images/bigdog.jpg'
+      dan: '#',
+      elliott: '#',
+      eric: '#',
+      wasiff: '#'
     };
   },
 };
