@@ -5,7 +5,7 @@ var app = {
   data: function() {
     return {
       msg: 'Welcome To hell', //+ this.$store.state.user.username,
-      background: '../Images/bigdog.jpg'
+      background: '#'
     };
   },
 
