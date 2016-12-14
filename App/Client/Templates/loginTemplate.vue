@@ -6,7 +6,7 @@
         </div>
         <div class="form-group">
             <label class="sr-only" for="exampleInputPassword2">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" v-model="password" required>
+            <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" v-model="password" required v-on:keyup.enter="login">
             <div class="help-block text-right"><a href="">Forget the password ?</a>
             </div>
         </div>

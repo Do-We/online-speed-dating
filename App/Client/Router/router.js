@@ -22,6 +22,7 @@ var routes = [
   },
   {
     path: '/video',
+    meta: { requiresAuth: true },
     component: activeDate,
   },
   {
@@ -57,6 +58,7 @@ var routes = [
   {
     path: '/events',
     component: blank,
+    meta: { requiresAuth: true },
     children: [
       // {
       //   path: '/signup',
@@ -87,7 +89,6 @@ var routes = [
 ];
 
 const router = new VueRouter({
-
   routes
 });
 
