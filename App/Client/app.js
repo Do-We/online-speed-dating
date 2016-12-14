@@ -19,10 +19,7 @@ Vue.component('profilelink', profileLink);
 Vue.component('aboutus', aboutus);
 Vue.component('techstack', techstack);
 
-
-
 const app = new Vue({
   store,
   router
 }).$mount('.app');
-
