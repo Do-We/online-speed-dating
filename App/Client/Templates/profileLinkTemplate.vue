@@ -2,7 +2,7 @@
     <div>
         <ul class="nav navbar-nav navbar-right" v-if='this.$store.state.user.username'>
             <li>
-                <p class="navbar-text">Welcome, {{this.$store.state.user.username}} !!</p>
+                <p class="navbar-text">Welcome, {{this.$store.state.user.username}}!</p>
             </li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle " data-toggle="dropdown"><b>Profile Options</b> <span class="caret"></span></a>
@@ -18,7 +18,7 @@
                     </li>
                     <li>
                         <button v-on:click.prevent="goToProfile" type="submit" class="btn btn-primary btn-block">Profile</button>
-                    </li>                  
+                    </li>
             </li>
             </ul>
             <ul class="nav navbar-nav navbar-right" v-else>
@@ -31,7 +31,7 @@
                         <li>
                             <div class="row">
                                 <div class="col-md-12">
-                                    Login via
+                                    Sign in with
                                     <div class="social-buttons">
                                         <a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
                                         <a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
@@ -41,14 +41,14 @@
                                         <login></login>
                                         <div class="checkbox">
                                             <label>
-                                                <input type="checkbox"> keep me logged-in
+                                                <input type="checkbox"> Stay logged in
                                             </label>
                                         </div>
                                     </form>
                                 </div>
                                 <div class="bottom text-center">
-                                    New here ?
-                                    <router-link to='/signup'><a href="#/signup"><b>Join Us</b></a>
+                                    Need an account?
+                                    <router-link to='/signup'><a href="#/signup"><b>Sign up</b></a>
                                     </router-link>
                                 </div>
                             </div>
@@ -58,6 +58,5 @@
     </div>
     </ul>
 </template>
-
 <style>
 </style>

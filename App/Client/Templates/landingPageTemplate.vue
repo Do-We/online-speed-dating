@@ -7,5 +7,5 @@
     </div>
     <aboutus></aboutus>
     <techstack></techstack>
-</div>    
+</div>
 </template>
