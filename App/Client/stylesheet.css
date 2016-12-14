@@ -89,7 +89,7 @@ body {
     background-color:rgba(255,255,255,.8);
 }
 
-#login-dp li:not:last-child {
+#login-dp li:not(:last-child) {
     padding-bottom: 5px;
 }
 
