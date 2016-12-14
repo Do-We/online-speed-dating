@@ -4,7 +4,7 @@ var app = {
   template: temp.template,
   data: function() {
     return {
-      msg: 'Welcome To hell', //+ this.$store.state.user.username,
+      msg: 'placeholder', //+ this.$store.state.user.username,
       background: '#'
     };
   },
