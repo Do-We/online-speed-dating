@@ -6,8 +6,8 @@ var PubNub = require('pubnub');
 
 exports.initiateEvent = function(req, res) {
   var pubnub = new PubNub({
-    publishKey: 'pub-c-97dbae08-7b07-4052-b8e0-aa255720ea8a', // Our Pub Key
-    subscribeKey: 'sub-c-794b9810-b865-11e6-a856-0619f8945a4f', // Our Sub Key
+    publishKey: process.env.PUBNUB_PUBLISH_KEY,
+    subscribeKey: process.env.PUBNUB_SUBSCRIBE_KEY,
     ssl: true
   });
   

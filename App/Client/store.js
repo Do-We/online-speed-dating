@@ -87,8 +87,8 @@ var store = new Vuex.Store({
     },
     initPubNub(state) {
       state.pubnub = new PubNub({
-        publishKey: 'pub-c-97dbae08-7b07-4052-b8e0-aa255720ea8a', // Our Pub Key
-        subscribeKey: 'sub-c-794b9810-b865-11e6-a856-0619f8945a4f', // Our Sub Key
+        publishKey: process.env.PUBNUB_PUBLISH_KEY,
+        subscribeKey: process.env.PUBNUB_SUBSCRIBE_KEY,
         ssl: true
       });
       state.pubnub.addListener({
@@ -132,8 +132,8 @@ var store = new Vuex.Store({
     initPhone(state) {
       state.phone = window.phone = new PHONE({
         number: state.user.username,
-        publish_key: 'pub-c-97dbae08-7b07-4052-b8e0-aa255720ea8a', // ff Our Pub Key
-        subscribe_key: 'sub-c-794b9810-b865-11e6-a856-0619f8945a4f', // Our Sub Key
+        publish_key: process.env.PUBNUB_PUBLISH_KEY,
+        subscribe_key: process.env.PUBNUB_SUBSCRIBE_KEY,
         ssl: true
       });
 
