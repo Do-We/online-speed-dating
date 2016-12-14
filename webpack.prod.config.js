@@ -1,7 +1,6 @@
 var webpackUglifyJsPlugin = require('webpack-uglify-js-plugin');
 var path = require('path'); 
 const webpack = require('webpack');
-const DotenvPlugin = require('webpack-dotenv-plugin');
 
 module.exports = {
   entry: './App/Client/app.js',
@@ -34,14 +33,10 @@ module.exports = {
     }
   },
   plugins: [
-    new DotenvPlugin({
-      sample: './.env.example',
-      path: './.env'
-    }),
     new webpack.EnvironmentPlugin([
       'PUBNUB_PUBLISH_KEY',
       'PUBNUB_SUBSCRIBE_KEY'
-    ]),
+    ])/*,
     new webpackUglifyJsPlugin({
       cacheFolder: path.resolve(__dirname, 'public/cached_uglify/'),
       debug: true,
@@ -55,6 +50,6 @@ module.exports = {
       compressor: {
         warnings: false
       }
-    })
+    })*/
   ]
 };
