@@ -5,7 +5,7 @@ var db = require('../../Database/config.js');
 //Request handlers
 exports.getEvents = (req, res) => {
   Event.find({}).exec((err, results) => {
-    if (err) { 
+    if (err) {
       throw err;
     }
     res.status(200).send(results);
@@ -13,9 +13,9 @@ exports.getEvents = (req, res) => {
 };
 
 exports.postEvent = (req, res) => {
-  let event = new Event(req.body);
+  let event = new Event(req.body); //save new event model in db
   event.save((err, result) => {
-    if (err) { 
+    if (err) {
       console.error('Could not save to database..', err);
       res.status(400).send(result);
     } else {
