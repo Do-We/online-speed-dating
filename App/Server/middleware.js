@@ -19,10 +19,10 @@ module.exports = function(app, express) {
   app.use('/', express.static(path.join(__dirname, '../../dist')));
   console.log('__dirname is ', __dirname);
   // app.use('/dist', express.static(path.join(__dirname, '../../compiled/transpiled')));
-  app.get('/dist/main.js', function(req, res) {
+/*  app.get('/dist/main.js', function(req, res) {
     console.log('called');
     res.sendFile(path.join(__dirname, '../../compiled/transpiled/main.js'));
-  });
+  });*/
   app.use(morgan('dev'));
   app.use(bodyParser.json());
   app.use(session(sessionOptions));
