@@ -5,7 +5,7 @@ if (process.env.NODE_ENV === 'production') {
   // We basically just create a child process that will run
   // the production bundle command
   var childProcess = require('child_process');
-  childProcess.exec('webpack -p --config webpack.prod.config.js', function (error, stdout, stderr) {
+  childProcess.exec('webpack --config webpack.prod.config.js', function (error, stdout, stderr) {
     console.log('stdout: ' + stdout);
     console.log('stderr: ' + stderr);
     if (error !== null) {
