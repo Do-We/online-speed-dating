@@ -2,7 +2,6 @@ var path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-  context: __dirname,
   entry: './App/Client/app.js',
   module: {
     loaders: [

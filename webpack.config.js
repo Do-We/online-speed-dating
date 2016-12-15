@@ -23,10 +23,12 @@ module.exports = {
     // publicPath: '/dist/',
   },
   plugins: [
+    // server-side injection
     new DotenvPlugin({
       sample: './.env.example',
       path: './.env'
     }),
+    // client-side injection
     new webpack.EnvironmentPlugin([
       'PUBNUB_PUBLISH_KEY',
       'PUBNUB_SUBSCRIBE_KEY'
