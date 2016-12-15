@@ -37,6 +37,7 @@ var admin = {
         //res.body could be something to use as a conditional
         var body = res.body;
         this.$store.commit('setUser', body);
+        //commit something else in store and then check it before navigating to event
       })
       .catch((err) => console.error(err));
     },

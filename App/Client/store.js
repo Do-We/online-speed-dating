@@ -20,6 +20,7 @@ var store = new Vuex.Store({
     currentRound: null,
     savedEvents: [],
     allEvents: [],
+    //new flag here
 
     user: {
       username: '',
@@ -45,6 +46,7 @@ var store = new Vuex.Store({
         currentRound: null,
         savedEvents: [],
         allEvents: [],
+        //new flag here too
 
         user: {
           username: '',
@@ -166,6 +168,7 @@ var store = new Vuex.Store({
     signalCalleeReadyFlag(state) {
       state.calleeReadyFlag = true;
     },
+    //do another flag METHOD setter thing here!
 
     setEvents (state, arr) {
       state.user.events = arr;
