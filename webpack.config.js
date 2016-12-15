@@ -1,7 +1,17 @@
 var webpackUglifyJsPlugin = require('webpack-uglify-js-plugin');
+
 var path = require('path');
 const webpack = require('webpack');
 const DotenvPlugin = require('webpack-dotenv-plugin');
+
+// Hack for Ubuntu on Windows: interface enumeration fails with EINVAL, so return empty.
+try {
+  require('os').networkInterfaces()
+} catch (e) {
+  require('os').networkInterfaces = () => ({})
+}
+
+////////////////////////////////////////////////////////////////////////////////////////
 
 module.exports = {
   entry: './App/Client/app.js',
