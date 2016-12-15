@@ -19,8 +19,8 @@ module.exports = {
   },
   output: {
     filename: 'bundle.js',
-    path: path.join(__dirname, '/dist'),
-    // publicPath: '/dist/',
+    path: path.join(__dirname, '/dist/build'),
+    publicPath: '',
   },
   plugins: [
     // server-side injection
