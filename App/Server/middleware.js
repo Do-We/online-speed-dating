@@ -16,7 +16,8 @@ var sessionOptions = {
 };
 
 module.exports = function(app, express) { 
-  app.use('/', express.static(path.join(__dirname, '../Client')));
+  app.use('/', express.static(path.join(__dirname, '../../dist')));
+  console.log('__dirname is ', __dirname);
   // app.use('/dist', express.static(path.join(__dirname, '../../compiled/transpiled')));
   app.get('/dist/main.js', function(req, res) {
     console.log('called');

@@ -19,8 +19,8 @@ module.exports = {
   },
   output: {
     filename: 'bundle.js',
-    path: __dirname + '/dist',
-    publicPath: '/dist/'
+    path: path.join(__dirname, '/dist'),
+    // publicPath: '/dist/'
   },
   plugins: [
     new webpack.EnvironmentPlugin([
