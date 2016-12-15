@@ -26,9 +26,6 @@ var myProfile = {
 
   //////part that breaks/////////////////////////////////
     toDate (event) {
-      //add conditional for event setup here
-      //if not set up, push to different route or return
-      //else go to event
       this.$router.push('/date/' + event._id + '/active');
     },
   //////////////////////////////////////////////////////

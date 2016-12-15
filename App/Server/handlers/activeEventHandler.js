@@ -75,4 +75,5 @@ exports.setupEvent = function(req, res) {
   //send an indicator that room has been setup and can now be navigated to(?)
   //or create seperate authentication and set it to true/passed/whatever right before sending server res
   res.status(200).send('Call Lists SO HOT RIGHT NOW');
+  //send back req body unique id and do something with it?
 };

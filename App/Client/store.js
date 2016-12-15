@@ -20,8 +20,7 @@ var store = new Vuex.Store({
     currentRound: null,
     savedEvents: [],
     allEvents: [],
-    //new flag here
-
+    readyEvents: [], //new storage for set up events here
     user: {
       username: '',
     }
@@ -46,8 +45,7 @@ var store = new Vuex.Store({
         currentRound: null,
         savedEvents: [],
         allEvents: [],
-        //new flag here too
-
+        readyEvents: [],
         user: {
           username: '',
         }
@@ -168,7 +166,6 @@ var store = new Vuex.Store({
     signalCalleeReadyFlag(state) {
       state.calleeReadyFlag = true;
     },
-    //do another flag METHOD setter thing here!
 
     setEvents (state, arr) {
       state.user.events = arr;
@@ -181,6 +178,11 @@ var store = new Vuex.Store({
     setNewEvent (state, event) {
       state.allEvents.push(event);
     },
+
+    addToReadyEvents (state, event) {
+      console.log("ADDTOREADYEVENTSGOTCALLED AND THIS SHOULD SHOW UP IN DEV TOOLS")
+      state.readyEvents.push(event);
+    }, //duplicated setNewEvent logic
 
     addToSavedEvents(state, arr) {
       state.savedEvents = arr;

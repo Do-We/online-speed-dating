@@ -16,7 +16,7 @@ const activeDate = {
       this.$store.commit('initPubNub');
       //create our Phone instance
       this.$store.commit('initPhone');
-      //subscribe our pubnub to the channels tha t control calls
+      //subscribe our pubnub to the channels that control calls
       this.$store.state.pubnub.subscribe({
         channels: [this.$route.params.dateid],
         withPresence: true, // also subscribe to presence instances.

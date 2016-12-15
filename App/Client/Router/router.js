@@ -73,19 +73,19 @@ var routes = [
   },
 
   ///////////////////////////////////////////////////////////////////////////////////
-  /////this one breaks if navigated to before event is 'set up'......but WHY
+  /////this one breaks if navigated to before event is 'set up'
   //user can enter and THEN LEAVE before setup and setup will run fine
   //if user enters before setup and STAYS, things will break (fed empty arrays)
   //if user leaves IN THE MIDDLE OF A SESSION, things will break (messes up arrays)
   //need to create a method to bar user from joining a date room before it is 'set up' by admin
   {
     path: '/date/:dateid',
-    meta: { requiresAuth: true }, //add another conditional here?
+    meta: { requiresAuth: true },
     component: blank,
     children: [
       {
         path: 'active',
-        //add another meta conditional here possibly
+        meta: {requiresEventSetup: true}, //adding conditional to check for event setup
         component: activeDate,
       }
     ]
@@ -117,6 +117,22 @@ router.beforeEach((to, from, next) => {
     next(); // make sure to always call next()!
   }
 
+  //CHECK IF DATE ROOM IS SET UP
+  if (to.matched.some(record => record.meta.requiresEventSetup)) {
+    console.log("store state readyevents", store.state.readyEvents)
+    if(store.state.readyEvents.length < 1){
+      //change conditional to check for id in store array
+      //push setup ids to an array and check for specific id
+      //fix conditional later
+      window.alert('Event is not set up!');
+      next({
+        path: '#'
+      });
+    }
+  } else {
+    next();
+  }
+
   //NOT CURRENTLY USED
   // if (to.matched.some(record => record.meta.requiresAdmin)) {
   //   // console.log('requres admin', store.state.user);
@@ -139,8 +155,6 @@ router.beforeEach((to, from, next) => {
   //     );
   //   }
   // }
-
-  //add a auth to check if room is set up
 });
 
 export default router;

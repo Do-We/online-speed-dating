@@ -26,18 +26,20 @@ var admin = {
       this[event._id] = 1;
     },
 
-    /////////////do something here?
-    setupEvent(event) { //activeEventHandler.setupEvent (by _id)
+    /////////////do something here!
+    setupEvent(event) { //activeEventHandler.setupEvent (by _id), event ID is a unique string
       console.log(event._id);
+      debugger;
       this.$http.post('/event/setup', {
         _id: event._id //search db for event by _id --> findOne({_id: event._id})
       })
       .then((res) => {
-        console.log('setup res', res.body) // --> 'CALL LISTS SO HOT RIGHT NOW'
-        //res.body could be something to use as a conditional
-        var body = res.body;
-        this.$store.commit('setUser', body);
-        //commit something else in store and then check it before navigating to event
+        //console.log('setup res', res.body) // --> 'CALL LISTS SO HOT RIGHT NOW'
+        //var body = res.body;
+        this.$store.commit('addToReadyEvents', event._id) //this isn't working
+        //this.$store.commit('setUser', body); //sike, THIS isn't working because there is no 'garbage' user in db --add this back in later! you NEED it
+        //store event in an array
+        //then check if it exists in the auth method in router.js
       })
       .catch((err) => console.error(err));
     },
