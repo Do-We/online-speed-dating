@@ -22,6 +22,7 @@ module.exports = {
     // publicPath: '/dist/'
   },
   plugins: [
+    // client-side injection
     new webpack.EnvironmentPlugin([
       'PUBNUB_PUBLISH_KEY',
       'PUBNUB_SUBSCRIBE_KEY'

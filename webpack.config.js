@@ -26,7 +26,7 @@ module.exports = {
     // server-side injection
     new DotenvPlugin({
       sample: './.env.example',
-      path: './.env'
+      path: path.join(__dirname, '/.env')
     }),
     // client-side injection
     new webpack.EnvironmentPlugin([
