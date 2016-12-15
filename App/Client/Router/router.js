@@ -77,6 +77,7 @@ var routes = [
   //user can enter and THEN LEAVE before setup and setup will run fine
   //if user enters before setup and STAYS, things will break (fed empty arrays)
   //if user leaves IN THE MIDDLE OF A SESSION, things will break (messes up arrays)
+  //as of now, user can only enter a room after it is set up and must stay in room
   //need to create a method to bar user from joining a date room before it is 'set up' by admin
   {
     path: '/date/:dateid',
@@ -104,7 +105,6 @@ router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
     Vue.http.post('auth/authorize')
       .then((res) => {
-        console.log(res.body);
         store.commit('setUser', res.body);
         store.commit('setSavedEvents', res.body.events);
         next();
@@ -119,12 +119,10 @@ router.beforeEach((to, from, next) => {
 
   //CHECK IF DATE ROOM IS SET UP
   if (to.matched.some(record => record.meta.requiresEventSetup)) {
-    console.log("store state readyevents", store.state.readyEvents)
-    if(store.state.readyEvents.length < 1){
-      //change conditional to check for id in store array
-      //push setup ids to an array and check for specific id
-      //fix conditional later
-      window.alert('Event is not set up!');
+    let readyEvents = store.state.readyEvents;
+    let navigatedToEvent = store.state.navigatedToEvent;
+    if(readyEvents.indexOf(navigatedToEvent) === -1){ //check readyEvents array for navigatedToEvent
+      window.alert('Event is not currently set up!');
       next({
         path: '#'
       });

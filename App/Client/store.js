@@ -20,6 +20,7 @@ var store = new Vuex.Store({
     currentRound: null,
     savedEvents: [],
     allEvents: [],
+    navigatedToEvent: null, //sets on link navigation to an event
     readyEvents: [], //new storage for set up events here
     user: {
       username: '',
@@ -45,6 +46,7 @@ var store = new Vuex.Store({
         currentRound: null,
         savedEvents: [],
         allEvents: [],
+        navigatedToEvent: null,
         readyEvents: [],
         user: {
           username: '',
@@ -180,9 +182,12 @@ var store = new Vuex.Store({
     },
 
     addToReadyEvents (state, event) {
-      console.log("ADDTOREADYEVENTSGOTCALLED AND THIS SHOULD SHOW UP IN DEV TOOLS")
       state.readyEvents.push(event);
-    }, //duplicated setNewEvent logic
+    }, //push set up events to an array
+
+    setNavigatedToEvent (state, event) {
+      state.navigatedToEvent = event;
+    }, //set navigated to last link clicked on
 
     addToSavedEvents(state, arr) {
       state.savedEvents = arr;

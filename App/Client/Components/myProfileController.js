@@ -26,6 +26,9 @@ var myProfile = {
 
   //////part that breaks/////////////////////////////////
     toDate (event) {
+      //set current event in store to this, then check if exists in setup array
+      this.$store.commit('setNavigatedToEvent', event._id)
+      //console.log('navigatedEvent from toDate', this.$store.state.navigatedToEvent)
       this.$router.push('/date/' + event._id + '/active');
     },
   //////////////////////////////////////////////////////
