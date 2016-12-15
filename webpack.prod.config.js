@@ -2,6 +2,7 @@ var path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
+  context: __dirname,
   entry: './App/Client/app.js',
   module: {
     loaders: [
@@ -17,9 +18,9 @@ module.exports = {
     ]
   },
   output: {
-    path: './compiled/transpiled',
-    publicPath: 'compiled/transpiled',
-    filename: '[name].js'
+    filename: 'bundle.js',
+    path: __dirname + '/dist',
+    publicPath: '/dist/'
   },
   plugins: [
     new webpack.EnvironmentPlugin([

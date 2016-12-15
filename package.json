@@ -67,7 +67,6 @@
     "vuex": "^2.0.0",
     "webpack": "^1.13.3",
     "webpack-stream": "^3.2.0",
-    "webpack-uglify-js-plugin": "^1.1.9",
     "webrtc": "^1.14.1"
   },
   "devDependencies": {
