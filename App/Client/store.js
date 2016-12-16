@@ -20,20 +20,18 @@ var store = new Vuex.Store({
     currentRound: null,
     savedEvents: [],
     allEvents: [],
-    
-    user: {
-      username: '',
-    }
+    user: {}
   },
   getters: {
-    getProfileInfo(state, name) {
+    getProfileInfo(state, user) {
+      console.log('GET PROFILE INFO', state.user)
       return state.user;
     }
   },
   mutations: {
     clearState(state) {
       console.log('this is before ', state);
-      var initialState = { 
+      var initialState = {
         videoOutSrc: '',
         myVideoSrc: '',
         beforeEventFlag: true,
@@ -45,7 +43,7 @@ var store = new Vuex.Store({
         currentRound: null,
         savedEvents: [],
         allEvents: [],
-    
+
         user: {
           username: '',
         }
@@ -54,7 +52,7 @@ var store = new Vuex.Store({
       for (var key in initialState) {
         state[key] = initialState[key];
       }
-      
+
       state = initialState;
       console.log('this is asfter ', state);
       if (state.pubnub) {
@@ -64,13 +62,13 @@ var store = new Vuex.Store({
         state.phone.hangup();
         state.phone.mystream.getVideoTracks()[0].stop();
       }
-
     },
     setUser(state, obj) {
       for (var key in obj) {
         state.user[key] = obj[key];
         state.isCallerFlag = obj.callList[0];
       }
+      store.getters.getProfileInfo;
     },
     setSavedEvents(state, arr ) {
       var tempSavedEvents = [];
@@ -140,8 +138,8 @@ var store = new Vuex.Store({
       var sessionConnected = function (session) {
         console.log('connected with', session);
         state.videoOutSrc = session.video.src;
-      
-      }; 
+
+      };
       state.phone.ready(function() {
         state.myVideoSrc = URL.createObjectURL(phone.mystream);
         console.log('phone ready');

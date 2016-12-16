@@ -1,23 +1,27 @@
 <template>
     <div class="row">
+        <div class="message">
+            <img class="background" :src="background" alt="backgroundImage">
+            {{ msg}}
+        </div>
         <div id="profileColumn" class="col-md-2 col-sm-offset-1">
             <h1 id="username" >{{$route.params.id}}</h1>
             <div>
-                <img id="profileImg" v-bind:src="profileImg">
-                <div>
-                    <p id="profText"  >Name: {{name}}</p>
+<!--                 <img id="profileImg" v-bind:src="profileImg">
+ -->                <div>
+                    <p id="profText"  >Name: {{user.name}}</p>
                 </div>
                 <div>
-                    <p id="profText">Gender: {{gender}}</p>
+                    <p id="profText">Gender: {{user.gender}}</p>
                 </div>
                 <div>
-                    <p id="profText">Age: {{age}}</p>
+                    <p id="profText">Age: {{user.age}}</p>
                 </div>
                 <div>
-                    <p id="profText">Location: {{location}}</p>
+                    <p id="profText">Location: {{user.location}}</p>
                 </div>
                 <div>
-                    <p id="profText">Description: {{userinfo}}</p>
+                    <p id="profText">Description: {{user.userinfo}}</p>
                 </div>
            <div id="editButton"> <button class="glyphicon glyphicon-pencil" v-if='this.$store.state.user.username' v-on:click='editProfile'></button></div>
             </div>

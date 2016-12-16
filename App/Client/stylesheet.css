@@ -38,6 +38,7 @@ body {
 .message {
     color: #fff;
     margin-left: 20px;
+    margin-bottom: 30px;
     font-weight: lighter;
     background: #2c4355;
     padding-left: 20px;
@@ -76,7 +77,7 @@ body {
     margin: 1em;
     margin-left: 25%;
     margin-top: 50px;
-    
+
 }
 /* tech stack logo */
 #mongo {
@@ -89,7 +90,7 @@ body {
     background-color:rgba(255,255,255,.8);
 }
 #login-dp .help-block{
-    font-size: 12px    
+    font-size: 12px
 }
 #login-dp .bottom{
     background-color: rgba(255,255,255,.8);
@@ -98,7 +99,7 @@ body {
     padding:14px;
 }
 #login-dp .social-buttons{
-    margin:12px 0    
+    margin:12px 0
 }
 #login-dp .social-buttons a{
     width: 49%;
@@ -112,7 +113,7 @@ body {
 }
 .btn-fb:hover{
     color: #fff;
-    background-color:#496ebc 
+    background-color:#496ebc
 }
 .btn-tw{
     color: #fff;

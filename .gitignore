@@ -3,6 +3,9 @@
 .LSOverride
 azure.err
 iisnode.yml
+
+# Secret Jwt key file
+config.js
 /public
 
 # Icon must ends with two \r.

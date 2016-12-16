@@ -57,6 +57,12 @@ var profile = {
       }
     }
   },
+  route: {
+    canActivate() {
+      console.log('can activate on `LOGIN` route - auth.user.isAuth', auth.user.isAuth)
+      return auth.user.isAuth;
+    }
+  }
 };
 
 export default profile;

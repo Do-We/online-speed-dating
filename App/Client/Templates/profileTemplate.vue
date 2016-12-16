@@ -18,7 +18,6 @@
                             </div>
                         <div id="messageBox" class="row">
                             <div v-if="hasInfo" id="userInfo" class="col-md-10 col-md-offset-1">
-                                <!--<img id="messageBox" src="http://www.clipartbest.com/cliparts/di7/egK/di7egKB7T.png" >-->
                                 {{userinfo}}
                             </div>
                         </div>

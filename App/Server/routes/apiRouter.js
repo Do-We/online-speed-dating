@@ -1,15 +1,35 @@
-var router = require('express').Router();
+var express = require('express')
+var router = express.Router();
 var userHandler = require('../handlers/userHandler.js');
 var eventHandler = require('../handlers/eventHandler.js');
 
-router.post('/user', userHandler.signUpUser);
-router.get('/user', userHandler.getUser);
-router.put('/user', userHandler.updateUser);
 
-router.get('/events', eventHandler.getEvents);
-router.post('/events', eventHandler.postEvent);
-router.put('/events', eventHandler.updateEvent);
+router.route('/user')
+.get(userHandler.getUser)
+.put(userHandler.updateUser);
 
-router.get('/user/events', eventHandler.getSingleEvent);
+router.route('/user/events')
+.get(eventHandler.getSingleEvent);
+
+router.route('/events')
+.get(eventHandler.getEvents)
+.post(eventHandler.postEvent)
+.put(eventHandler.updateEvent);
+
+router.route('/userBasic')
+.put(userHandler.updateUser);
+
+router.route('/userInterests')
+.put(userHandler.updateInterests);
+
+router.route('/userPersonal')
+.put(userHandler.updatePersonal);
+
 
 module.exports = router; 
+
+
+
+
+// var passport = require('passport');
+

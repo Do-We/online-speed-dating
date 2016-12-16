@@ -1,6 +1,6 @@
 import temp from '../Templates/eventsTemplate.vue';
 /* date formatting library */
-var moment = require('moment'); 
+var moment = require('moment');
 
 
 var events = {
@@ -25,7 +25,7 @@ var events = {
   methods: {
     getEvents () {
       this.$http.get('/api/events')
-      .then((res) => { 
+      .then((res) => {
         this.$store.commit('setAllEvents', res.body);
       })
       .catch((err) => { console.error('There was an err with your GET request, ', err); });
@@ -39,13 +39,13 @@ var events = {
     },
 
     join (event) {
-      //handles event creation within users array 
+      //handles event creation within users array
       var currentUserEvents = this.$store.state.user.events;
       var savedUserEvents = this.$store.state.savedEvents;
 
       //check to see if event is in curren users event list
       if (currentUserEvents.indexOf(event._id) === -1 ) {
-        //if not, then 
+        //if not, then
         //put current users username on to given event's usernames property's array
         event.usernames.push(this.$store.state.user.username);
         //put eventID on current users events property's array
@@ -53,8 +53,8 @@ var events = {
         this.$store.commit('setEvents', currentUserEvents);
 
         //update user on db with new events array
-        this.$http.put('/api/user', this.$store.state.user)
-        .then((res) => { 
+        this.$http.put('/api/userBasic', this.$store.state.user)
+        .then((res) => {
           savedUserEvents.push(event);
           //update savedEvents with new event added to user
           this.$store.commit('addToSavedEvents', savedUserEvents);
@@ -63,8 +63,8 @@ var events = {
 
         //update event on db with new usernames array
         this.$http.put('/api/events', event)
-        .then((res) => { 
-          this.getEvents(); 
+        .then((res) => {
+          this.getEvents();
         })
         .catch((err) => { console.error('error ', err); });
       }
