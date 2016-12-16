@@ -71,6 +71,14 @@ var routes = [
       }
     ]
   },
+
+  ///////////////////////////////////////////////////////////////////////////////////
+  /////this one breaks if navigated to before event is 'set up'
+  //user can enter and THEN LEAVE before setup and setup will run fine
+  //if user enters before setup and STAYS, things will break (fed empty arrays)
+  //if user leaves IN THE MIDDLE OF A SESSION, things will break (messes up arrays)
+  //as of now, user can only enter a room after it is set up and must stay in room
+  //need to create a method to bar user from joining a date room before it is 'set up' by admin
   {
     path: '/date/:dateid',
     meta: { requiresAuth: true },
@@ -78,14 +86,13 @@ var routes = [
     children: [
       {
         path: 'active',
+        meta: {requiresEventSetup: true}, //adding conditional to check for event setup
         component: activeDate,
       }
-  //     {
-  //       path: '/inactive',
-  //       component: inactiveController,
-  //     },
     ]
   }
+  ///////////////////////////////////////////////////////////////////////////////////
+
 ];
 
 const router = new VueRouter({
@@ -98,7 +105,6 @@ router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
     Vue.http.post('auth/authorize')
       .then((res) => {
-        console.log(res.body);
         store.commit('setUser', res.body);
         store.commit('setSavedEvents', res.body.events);
         next();
@@ -110,28 +116,43 @@ router.beforeEach((to, from, next) => {
   } else {
     next(); // make sure to always call next()!
   }
-  if (to.matched.some(record => record.meta.requiresAdmin)) {
-    // console.log('requres admin', store.state.user);
-    if (store.state.user) {
-      // console.log('logged in');
-      if (store.state.user.admin) {
-        // console.log('logged in as admin');
-        next();
-      } else {
-        // console.log('logged in but no admin');
-        next({
-          path: '/'
-        });
-      }
-    } else {
-      // console.log('not logged in');
-      next({
-        path: '/'
-      }
-      );
-    }
 
+  //CHECK IF DATE ROOM IS SET UP
+  if (to.matched.some(record => record.meta.requiresEventSetup)) {
+    let readyEvents = store.state.readyEvents;
+    let navigatedToEvent = store.state.navigatedToEvent;
+    if(readyEvents.indexOf(navigatedToEvent) === -1){ //check readyEvents array for navigatedToEvent
+      window.alert('Event is not currently set up!');
+      next({
+        path: '#'
+      });
+    }
+  } else {
+    next();
   }
+
+  //NOT CURRENTLY USED
+  // if (to.matched.some(record => record.meta.requiresAdmin)) {
+  //   // console.log('requres admin', store.state.user);
+  //   if (store.state.user) {
+  //     // console.log('logged in');
+  //     if (store.state.user.admin) {
+  //       // console.log('logged in as admin');
+  //       next();
+  //     } else {
+  //       // console.log('logged in but no admin');
+  //       next({
+  //         path: '/'
+  //       });
+  //     }
+  //   } else {
+  //     // console.log('not logged in');
+  //     next({
+  //       path: '/'
+  //     }
+  //     );
+  //   }
+  // }
 });
 
 export default router;

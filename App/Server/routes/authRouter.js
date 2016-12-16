@@ -15,5 +15,4 @@ router.get('/logout', function(req, res) {
   res.status(200).send('logged out');
 });
 
-
-module.exports = router; 
+module.exports = router;

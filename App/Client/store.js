@@ -20,7 +20,8 @@ var store = new Vuex.Store({
     currentRound: null,
     savedEvents: [],
     allEvents: [],
-
+    navigatedToEvent: null, //sets on link navigation to an event
+    readyEvents: [], //new storage for set up events here
     user: {
       username: '',
     }
@@ -45,7 +46,8 @@ var store = new Vuex.Store({
         currentRound: null,
         savedEvents: [],
         allEvents: [],
-
+        navigatedToEvent: null,
+        readyEvents: [],
         user: {
           username: '',
         }
@@ -153,7 +155,7 @@ var store = new Vuex.Store({
 
         session.connected(sessionConnected);
         session.ended(function(idk) {
-          console.log('sessionn ended');
+          console.log('session ended');
         });
       });
     },
@@ -178,6 +180,14 @@ var store = new Vuex.Store({
     setNewEvent (state, event) {
       state.allEvents.push(event);
     },
+
+    addToReadyEvents (state, event) {
+      state.readyEvents.push(event);
+    }, //push set up events to an array
+
+    setNavigatedToEvent (state, event) {
+      state.navigatedToEvent = event;
+    }, //set navigated to last link clicked on
 
     addToSavedEvents(state, arr) {
       state.savedEvents = arr;

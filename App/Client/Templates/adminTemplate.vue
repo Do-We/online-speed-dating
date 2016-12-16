@@ -1,5 +1,5 @@
 <template>
-  <div> 
+  <div>
     <div class="container eventCreation">
       <p id="header"> Sign in for an event </p>
       <form>
@@ -10,7 +10,7 @@
         <button role="button" v-on:click.prevent="submit">Submit</button>
       </form>
     </div>
-    
+
     <div class='row' v-for='event in this.allEvents'>
       <div class='col-xs-2' >{{event.eventName}}</div>
       <div class='col-xs-2' >{{moment(event.date).format('MMMM Do YYYY, h:mm:ss a')}}</div>
@@ -22,8 +22,7 @@
   </div>
 </template>
 
-        
-        
+
 <style>
   #header{
     font-size: 20px;
@@ -39,7 +38,7 @@
   #title {
     background: rgba(173, 216, 230,1);
   }
-  
+
   .eventCreation {
     background: #5d868a;
     height: 150px;

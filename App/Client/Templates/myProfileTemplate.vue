@@ -5,7 +5,7 @@
             <div>
                 <img id="profileImg" v-bind:src="profileImg">
                 <div>
-                    <p id="profText"  >Name: {{name}}</p>
+                    <p id="profText">Name: {{name}}</p>
                 </div>
                 <div>
                     <p id="profText">Gender: {{gender}}</p>
