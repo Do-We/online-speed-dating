@@ -1,5 +1,3 @@
-var webpackUglifyJsPlugin = require('webpack-uglify-js-plugin');
-
 var path = require('path');
 const webpack = require('webpack');
 const DotenvPlugin = require('webpack-dotenv-plugin');
@@ -10,8 +8,6 @@ try {
 } catch (e) {
   require('os').networkInterfaces = () => ({})
 }
-
-////////////////////////////////////////////////////////////////////////////////////////
 
 module.exports = {
   entry: './App/Client/app.js',
@@ -29,15 +25,17 @@ module.exports = {
     ]
   },
   output: {
-    path: path.join(__dirname, '/compiled/transpiled'),
-    publicPath: 'compiled/transpiled',
-    filename: '[name].js'
+    filename: 'bundle.js',
+    path: path.join(__dirname, '/dist/build'),
+    publicPath: '',
   },
   plugins: [
+    // server-side injection
     new DotenvPlugin({
-      sample: './.env.example',
-      path: './.env'
+      sample: path.join(__dirname, '/.env.example'),
+      path: path.join(__dirname, '/.env')
     }),
+    // client-side injection
     new webpack.EnvironmentPlugin([
       'PUBNUB_PUBLISH_KEY',
       'PUBNUB_SUBSCRIBE_KEY'
@@ -52,19 +50,5 @@ module.exports = {
     loaders: {
       js: 'babel'
     }
-  },
-  // plugins: [
-  //   new webpackUglifyJsPlugin({
-  //     cacheFolder: path.resolve(__dirname, 'public/cached_uglify/'),
-  //     debug: true,
-  //     minimize: true,
-  //     sourceMap: false,
-  //     output: {
-  //       comments: false
-  //     },
-  //     compressor: {
-  //       warnings: false
-  //     }
-  //   })
-  // ]
+  }
 };
