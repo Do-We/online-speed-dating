@@ -1,6 +1,8 @@
 var mongoose = require('mongoose');
+require('dotenv-safe').load();
 
-mongoURI = 'mongodb://elliott:e@ds129028.mlab.com:29028/heroku_wsps6bz3';
+mongoURI = process.env.MONGODB_URI;
+console.log(mongoURI);
 mongoose.connect(mongoURI);
 
 var db = mongoose.connection; 

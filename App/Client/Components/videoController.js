@@ -21,8 +21,8 @@ var video = {
     makePhone: function(myNumber) {
       this.phone = window.phone = PHONE({
         number: myNumber, // listen on username line else Anonymous
-        publish_key: 'pub-c-97dbae08-7b07-4052-b8e0-aa255720ea8a', // Your Pub Key
-        subscribe_key: 'sub-c-794b9810-b865-11e6-a856-0619f8945a4f', // Your Sub Key
+        publish_key: process.env.PUBNUB_PUBLISH_KEY,
+        subscribe_key: process.env.PUBNUB_SUBSCRIBE_KEY,
         ssl: true 
       });
       var sessionConnected = function(session) {

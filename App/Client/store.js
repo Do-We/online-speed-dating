@@ -20,7 +20,8 @@ var store = new Vuex.Store({
     currentRound: null,
     savedEvents: [],
     allEvents: [],
-    
+    navigatedToEvent: null, //sets on link navigation to an event
+    readyEvents: [], //new storage for set up events here
     user: {
       username: '',
     }
@@ -33,7 +34,7 @@ var store = new Vuex.Store({
   mutations: {
     clearState(state) {
       console.log('this is before ', state);
-      var initialState = { 
+      var initialState = {
         videoOutSrc: '',
         myVideoSrc: '',
         beforeEventFlag: true,
@@ -45,7 +46,8 @@ var store = new Vuex.Store({
         currentRound: null,
         savedEvents: [],
         allEvents: [],
-    
+        navigatedToEvent: null,
+        readyEvents: [],
         user: {
           username: '',
         }
@@ -54,9 +56,9 @@ var store = new Vuex.Store({
       for (var key in initialState) {
         state[key] = initialState[key];
       }
-      
+
       state = initialState;
-      console.log('this is asfter ', state);
+      console.log('this is after ', state);
       if (state.pubnub) {
         state.pubnub.stop();
       }
@@ -87,12 +89,12 @@ var store = new Vuex.Store({
     },
     initPubNub(state) {
       state.pubnub = new PubNub({
-        publishKey: 'pub-c-97dbae08-7b07-4052-b8e0-aa255720ea8a', // Our Pub Key
-        subscribeKey: 'sub-c-794b9810-b865-11e6-a856-0619f8945a4f', // Our Sub Key
+        publishKey: process.env.PUBNUB_PUBLISH_KEY,
+        subscribeKey: process.env.PUBNUB_SUBSCRIBE_KEY,
         ssl: true
       });
       state.pubnub.addListener({
-        message: function(message) {
+        message: function(message) { //listens for event from signalCalleeReady on activedatectrl
           if (message.message === 'Ready') {
             console.log('GotReadyMessageFromPartner');
             state.calleeReadyFlag = true;
@@ -103,7 +105,6 @@ var store = new Vuex.Store({
             state.phone.hangup();
 
             state.phone.mystream.getVideoTracks()[0].stop();
-
           } else {
             console.log('This is round', message.message);
             state.phone.hangup();
@@ -125,23 +126,20 @@ var store = new Vuex.Store({
             state.calleeReadyFlag = false;
           }
         },
-        status: function(statusEvent) {
-        }
       });
     },
     initPhone(state) {
       state.phone = window.phone = new PHONE({
         number: state.user.username,
-        publish_key: 'pub-c-97dbae08-7b07-4052-b8e0-aa255720ea8a', // ff Our Pub Key
-        subscribe_key: 'sub-c-794b9810-b865-11e6-a856-0619f8945a4f', // Our Sub Key
+        publish_key: process.env.PUBNUB_PUBLISH_KEY,
+        subscribe_key: process.env.PUBNUB_SUBSCRIBE_KEY,
         ssl: true
       });
 
       var sessionConnected = function (session) {
         console.log('connected with', session);
         state.videoOutSrc = session.video.src;
-      
-      }; 
+      };
       state.phone.ready(function() {
         state.myVideoSrc = URL.createObjectURL(phone.mystream);
         console.log('phone ready');
@@ -153,7 +151,7 @@ var store = new Vuex.Store({
 
         session.connected(sessionConnected);
         session.ended(function(idk) {
-          console.log('sessionn ended');
+          console.log('session ended');
         });
       });
     },
@@ -178,6 +176,14 @@ var store = new Vuex.Store({
     setNewEvent (state, event) {
       state.allEvents.push(event);
     },
+
+    addToReadyEvents (state, event) {
+      state.readyEvents.push(event);
+    }, //push set up events to an array
+
+    setNavigatedToEvent (state, event) {
+      state.navigatedToEvent = event;
+    }, //set navigated to last link clicked on
 
     addToSavedEvents(state, arr) {
       state.savedEvents = arr;

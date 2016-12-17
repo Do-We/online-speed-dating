@@ -12,13 +12,13 @@ const profileLink = {
   computed: {
     username () {
       return this.$store.state.user.username;
-    } 
+    }
   },
 
   methods: {
     goToMyProfile: function() {
       this.$router.push('/myprofile/' + this.username);
-    },   
+    },
 
     editProfile: function() {
       this.$router.push('/myprofile/' + this.username + '/edit');
@@ -26,10 +26,14 @@ const profileLink = {
 
     goToProfile: function() {
       this.$router.push('/profile/' + this.username);
-    }, 
-     
+    },
+
+    goToEvents: function() {
+      this.$router.push('/events');
+    },
+
     logout: function() {
-      this.$router.push('/'); 
+      this.$router.push('/');
       this.$store.commit('clearState');
       this.$http.get('/auth/logout')
       .then(()=>{

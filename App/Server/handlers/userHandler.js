@@ -1,7 +1,7 @@
 var userModel = require('../../Database/models/userModel.js');
 var db = require('../../Database/config.js');
 var User = require('../../Database/models/userModel.js');
- 
+
 exports.getUserDB = function(username, cb) {
   User.findOne({ username: username})
    .exec(function(err, user) {
@@ -9,13 +9,13 @@ exports.getUserDB = function(username, cb) {
      cb(null, user);
    });
 };
- 
+
 exports.createUserDB = function(user, cb) {
   User.create(user, function (err, user) {
     if (err) { return cb(err); }
     cb(null, user);
   });
-}; 
+};
 
 exports.signUpUser = function (req, res) {
   var username = req.body.username;

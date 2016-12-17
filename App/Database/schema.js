@@ -12,7 +12,8 @@ var userSchema = mongoose.Schema({
   admin: {type: Boolean, default: false},
   events: {type: Array, default: []},
   callList: {type: Array, default: []},
-  matches: {type: Array, default: []}
+  matches: {type: Array, default: []},
+  likes: {type: Array, default: []}
 });
 
 var eventSchema = mongoose.Schema({
@@ -23,6 +24,5 @@ var eventSchema = mongoose.Schema({
   eventCallDuration: {type: Number, default: 300000},
 });
 
- 
 exports.userSchema = userSchema;
 exports.eventSchema = eventSchema;
