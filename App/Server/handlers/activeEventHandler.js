@@ -12,7 +12,6 @@ exports.initiateEvent = function(req, res) {
 
   Event.findOne({ _id: req.body.eventId})
    .exec(function(err, event) {
-
     //  var currentEvent = event;
     //  var eventId = event._id; //could be a unique event  ID instead, might be better to avoid any possible duplication
     //  var eventCallDuration = event.eventCallDuration;

@@ -31,17 +31,10 @@ var admin = {
         _id: event._id //search db for event by _id --> findOne({_id: event._id})
       })
       .then((res) => {
-
         this.$store.commit('addToReadyEvents', event._id) //push event id to readyEvents
-
-        //var body = res.body;
-        //this.$store.commit('setUser', body);
-        //THIS isn't working because there is no 'garbage' user in db
-        //--add this back in later! you NEED it
       })
       .catch((err) => console.error(err));
     },
-    //////////////////////////
 
     endEvent(event) {
       this.$store.state.pubnub.publish({

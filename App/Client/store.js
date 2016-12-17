@@ -94,7 +94,7 @@ var store = new Vuex.Store({
         ssl: true
       });
       state.pubnub.addListener({
-        message: function(message) {
+        message: function(message) { //listens for event from signalCalleeReady on activedatectrl
           if (message.message === 'Ready') {
             console.log('GotReadyMessageFromPartner');
             state.calleeReadyFlag = true;
@@ -105,7 +105,6 @@ var store = new Vuex.Store({
             state.phone.hangup();
 
             state.phone.mystream.getVideoTracks()[0].stop();
-
           } else {
             console.log('This is round', message.message);
             state.phone.hangup();
@@ -127,8 +126,6 @@ var store = new Vuex.Store({
             state.calleeReadyFlag = false;
           }
         },
-        status: function(statusEvent) {
-        }
       });
     },
     initPhone(state) {
@@ -142,7 +139,6 @@ var store = new Vuex.Store({
       var sessionConnected = function (session) {
         console.log('connected with', session);
         state.videoOutSrc = session.video.src;
-
       };
       state.phone.ready(function() {
         state.myVideoSrc = URL.createObjectURL(phone.mystream);
