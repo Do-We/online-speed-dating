@@ -57,16 +57,16 @@ var events = {
         .then((res) => { 
           savedUserEvents.push(event);
           //update savedEvents with new event added to user
-          this.$store.commit('addToSavedEvents', savedUserEvents);
+          this.$http.put('/api/events', event)
+          .then((res) => { 
+          //update event on db with new usernames array
+            this.$store.commit('addToSavedEvents', savedUserEvents);
+            this.getEvents(); 
+          })
+          .catch((err) => { console.error('error ', err); });
         })
         .catch((err) => { console.error('error ', err); });
 
-        //update event on db with new usernames array
-        this.$http.put('/api/events', event)
-        .then((res) => { 
-          this.getEvents(); 
-        })
-        .catch((err) => { console.error('error ', err); });
       }
     },
 
